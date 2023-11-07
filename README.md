@@ -420,8 +420,3 @@ $ scripts/spdk_iostat -d -m -i 1 -t 3000
 
 ## 5. License
 CSAL follows the same license with SPDK ([BSD 3-clause](https://opensource.org/license/bsd-3-clause/)). You can use CSAL to make comparison under BSD 3-clause license. For this Artifact Evaluation repository, we use [MIT](https://opensource.org/license/mit/) license.
-
-## 6. Others
-We have now implemented a new approach that doesn't rely on the VSS capability for the cache layer. In subsequent releases, you'll be able to construct CSAL on devices without VSS.
-
-For any other help, please contact SPDK community.
