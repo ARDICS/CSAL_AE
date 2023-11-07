@@ -13,25 +13,33 @@ runtime=30s
 size=100%
 
 [job1]
+name=job1
 filename=FTL0p0
 
 [job2]
+name=job2
 filename=FTL0p1
 
 [job3]
+name=job3
 filename=FTL0p2
 
 [job4]
+name=job4
 filename=FTL0p3
 
 [job5]
+name=job5
 filename=FTL0p4
 
 [job6]
+name=job6
 filename=FTL0p5
 
 [job7]
+name=job7
 filename=FTL0p6
 
 [job8]
+name=job8
 filename=FTL0p7
