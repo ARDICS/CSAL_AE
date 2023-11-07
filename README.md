@@ -271,7 +271,7 @@ The figure above describes the high level architecture of what we will build in 
    ``` 
    Note: vda is system disk; the subsequent disks are the data disks (e.g., vdb). 
    
-7. Create more VMs
+7. Create more VMs  
    If you want to create more virtual disks for different VMs, please repeat step 4, 5, and 6. **In our experiments, we create 8 virtual disks and assign each to a VM. Or you can assign all 8 partitions to one VM for simplicity.**
    
 #### Building fio_plugin with CSAL (optional)
@@ -291,8 +291,12 @@ We provide another alternative to evaluate CSAL in host server with fio_plugin t
    $ make
    ```
 
-3. Get fio configuration file
-   Please get fio configuration file (i.e., csal.json) from this repository. Note that the csal.json is the SPDK bdev construction description file for fio_plugin tool. The SPDK engine inside fio_plugin will use this description to construct block devices. Now we use it to construct CSAL block device (FTL0) with nvme0n1 (0000:00:05.0) and nvme1n1 (0000:00:06.0). You can modify csal.json for whatever block device you want to construct.
+3. Get fio configuration file  
+   Get fio configuration file (i.e., csal.json) from this repository:
+   ```bash
+   $ git clone https://github.com/ARDICS/CSAL_Artifact_Evaluation.git
+   ```
+   Note: csal.json is the SPDK bdev construction description file for fio_plugin tool. The SPDK engine inside fio_plugin will use this description to construct block devices. Now we use it to construct CSAL block device (FTL0) with nvme0n1 (0000:00:05.0) and nvme1n1 (0000:00:06.0). You can modify csal.json for whatever block device you want to construct.
 
 4. Launch fio_plugin tool
    ```bash
@@ -324,13 +328,10 @@ For simplicity, in the following instructions, we assume you assign all partitio
 To execute the following instructions, you have to log into the VM first. Before starting evaluation, we should precondition the disks in order to make them enter "stable state". The folder "precondition" in our Artifact Evaluation repository includes a script to precondition disks. You can use this configuration and follow the following instructions.
 ```bash
 $ yum install fio -y
-$ git clone https://github.com/yanbozyb/AE_CSAL.git
-$ cd AE_CSAL
+$ git clone https://github.com/ARDICS/CSAL_Artifact_Evaluation.git
 $ sh precondition/start.sh
 ```
 This will take a long time (around 10 hours) to precondition virtual disks by sequentially writing to the whole space twice, followed by random writes across the entire space.
-
-Note: in the following instructions, we use /dev/nvme0n1 as the example of virtual disk which is the same as our paper's experiments. If you use vhost-blk to construct virtual disks according to the kick-the-tire instructions above, you should change the virtual disk name to /dev/vdb.
 
 ### Reproducing Figures 10, 11, 12 (40+ hours)
 First, to reproduce **figure 10**, you could execute the following instructions (20+ hours):
