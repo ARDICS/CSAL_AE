@@ -1,0 +1,169 @@
+{
+  "subsystems": [
+    {
+      "subsystem": "scheduler",
+      "config": [
+        {
+          "method": "framework_set_scheduler",
+          "params": {
+            "name": "static"
+          }
+        }
+      ]
+    },
+    {
+      "subsystem": "accel",
+      "config": []
+    },
+    {
+      "subsystem": "vmd",
+      "config": []
+    },
+    {
+      "subsystem": "sock",
+      "config": [
+        {
+          "method": "sock_impl_set_options",
+          "params": {
+            "impl_name": "posix",
+            "recv_buf_size": 2097152,
+            "send_buf_size": 2097152,
+            "enable_recv_pipe": true,
+            "enable_quickack": false,
+            "enable_placement_id": 0,
+            "enable_zerocopy_send_server": true,
+            "enable_zerocopy_send_client": false,
+            "zerocopy_threshold": 0,
+            "tls_version": 0,
+            "enable_ktls": false
+          }
+        },
+        {
+          "method": "sock_impl_set_options",
+          "params": {
+            "impl_name": "ssl",
+            "recv_buf_size": 2097152,
+            "send_buf_size": 2097152,
+            "enable_recv_pipe": true,
+            "enable_quickack": false,
+            "enable_placement_id": 0,
+            "enable_zerocopy_send_server": true,
+            "enable_zerocopy_send_client": false,
+            "zerocopy_threshold": 0,
+            "tls_version": 0,
+            "enable_ktls": false
+          }
+        }
+      ]
+    },
+    {
+      "subsystem": "bdev",
+      "config": [
+        {
+          "method": "bdev_set_options",
+          "params": {
+            "bdev_io_pool_size": 65535,
+            "bdev_io_cache_size": 256,
+            "bdev_auto_examine": true
+          }
+        },
+        {
+          "method": "bdev_split_create",
+          "params": {
+            "base_bdev": "FTL0",
+            "split_count": 8,
+            "split_size_mb": 0
+          }
+        },
+        {
+          "method": "bdev_nvme_set_options",
+          "params": {
+            "action_on_timeout": "none",
+            "timeout_us": 0,
+            "timeout_admin_us": 0,
+            "keep_alive_timeout_ms": 10000,
+            "transport_retry_count": 4,
+            "arbitration_burst": 0,
+            "low_priority_weight": 0,
+            "medium_priority_weight": 0,
+            "high_priority_weight": 0,
+            "nvme_adminq_poll_period_us": 10000,
+            "nvme_ioq_poll_period_us": 0,
+            "io_queue_requests": 512,
+            "delay_cmd_submit": true,
+            "bdev_retry_count": 3,
+            "transport_ack_timeout": 0,
+            "ctrlr_loss_timeout_sec": 0,
+            "reconnect_delay_sec": 0,
+            "fast_io_fail_timeout_sec": 0
+          }
+        },
+        {
+          "method": "bdev_nvme_attach_controller",
+          "params": {
+            "name": "nvme0",
+            "trtype": "PCIe",
+            "traddr": "0000:00:05.0",
+            "prchk_reftag": false,
+            "prchk_guard": false,
+            "ctrlr_loss_timeout_sec": 0,
+            "reconnect_delay_sec": 0,
+            "fast_io_fail_timeout_sec": 0
+          }
+        },
+        {
+          "method": "bdev_nvme_attach_controller",
+          "params": {
+            "name": "nvme1",
+            "trtype": "PCIe",
+            "traddr": "0000:00:06.0",
+            "prchk_reftag": false,
+            "prchk_guard": false,
+            "ctrlr_loss_timeout_sec": 0,
+            "reconnect_delay_sec": 0,
+            "fast_io_fail_timeout_sec": 0
+          }
+        },
+        {
+          "method": "bdev_nvme_set_hotplug",
+          "params": {
+            "period_us": 100000,
+            "enable": false
+          }
+        },
+        {
+          "method": "bdev_ftl_create",
+          "params": {
+            "name": "FTL0",
+            "overprovisioning": 18,
+            "l2p_dram_limit": 2048,
+            "core_mask": "0x3",
+            "uuid": "dbb84bdc-ba61-4d44-a5a9-55306eb547b4",
+            "fast_shutdown": false,
+            "base_bdev": "nvme0n1",
+            "cache": "nvme1n1"
+          }
+        },
+        {
+          "method": "bdev_wait_for_examine"
+        }
+      ]
+    },
+    {
+      "subsystem": "vhost_blk",
+      "config": []
+    },
+    {
+      "subsystem": "scsi",
+      "config": null
+    },
+    {
+      "subsystem": "nbd",
+      "config": []
+    },
+    {
+      "subsystem": "vhost_scsi",
+      "config": []
+    }
+  ]
+}
