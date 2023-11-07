@@ -1,7 +1,6 @@
-# Artifact Evaluation for "[CSAL: the Next-Gen Local Disks for the Cloud](https://doi.org/10.1145/3627703.3629566)" published in [EuroSys'24](https://2024.eurosys.org/)
-
+# Artifact Evaluation for "CSAL: the Next-Gen Local Disks for the Cloud" (EuroSys'24)
 ## 1. Introduction
-This Artifact Evaluation pertains to "CSAL: the Next-Gen Local Disks for the Cloud" accepted by EuroSys 2024. The goal of this Artifact Evaluation is to help you 1) get project source code; 2) rebuild the project from scratch; 3) reproduce the main experimental results. Please refer to [EuroSys 2024 AE](https://sysartifacts.github.io/eurosys2024/) for more information.
+This Artifact Evaluation pertains to "[CSAL: the Next-Gen Local Disks for the Cloud](https://doi.org/10.1145/3627703.3629566)" published in [EuroSys'24](https://2024.eurosys.org/). The goal of this Artifact Evaluation is to help you 1) get project source code; 2) rebuild the project from scratch; 3) reproduce the main experimental results. Please refer to [EuroSys 2024 AE](https://sysartifacts.github.io/eurosys2024/) for more information about aritifact evaluation.
 
 ## 2. Access Source Code
 The source code of CSAL has been accepted by SPDK community ([BSD 3-clause license](https://opensource.org/license/bsd-3-clause/)) and merged into SPDK main branch at [Github](https://github.com/spdk/spdk). Within SPDK, CSAL is implemented as a module of [Flash Translation Layer](https://spdk.io/doc/ftl.html). You can find CSAL implementation under the folder "[spdk/lib/ftl](https://github.com/spdk/spdk/tree/master/lib/ftl)" as follows:
