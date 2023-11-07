@@ -274,7 +274,7 @@ The figure above describes the high level architecture of what we will build in 
    If you want to create more virtual disks for different VMs, please repeat step 4, 5, and 6. **In our experiments, we create 8 virtual disks and assign each to a VM. Or you can assign all 8 partitions to one VM for simplicity.**
    
 #### Building fio_plugin with CSAL (optional)
-We provide another alternative to evaluate CSAL in host server with fio_plugin tool. The following instructions introduce how to build the fio_plugin tool with CSAL. **We do not suggest using fio_plugin with CSAL for evaluation since fio will construct CSAL block device every time when you start fio job. This will take long time.**
+We also provide another alternative to evaluate CSAL in a host server. The following instructions introduce how to build the fio_plugin tool with CSAL. **However, we do not recommend using this fio_plugin tool with CSAL because this takes long time for evaluation (fio will construct CSAL block device every time when you launch fio job).**
 
 1. Compile fio tool
    ```bash
