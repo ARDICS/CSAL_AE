@@ -133,7 +133,7 @@ The figure above describes the high level architecture of what we will build in 
 
 4. Enable VSS for cache device
    ```bash
-   $ nvme format /dev/nvme2 --namespace-id=1 --lbaf=4 --force --reset
+   $ nvme format /dev/nvme1 --namespace-id=1 --lbaf=4 --force --reset
    ```
    The SSD will be formatted into the layout with 4KB data sector followed by 64B metadata area.  
 
@@ -421,8 +421,6 @@ $ scripts/spdk_iostat -d -m -i 1 -t 3000
 
 ## 5. License
 CSAL follows the same license with SPDK ([BSD 3-clause](https://opensource.org/license/bsd-3-clause/)). You can use CSAL to make comparison under BSD 3-clause license. For this Artifact Evaluation repository, we use [MIT](https://opensource.org/license/mit/) license.
-
-
 
 ## 6. Others
 We have now implemented a new approach that doesn't rely on the VSS capability for the cache layer. In subsequent releases, you'll be able to construct CSAL on devices without VSS.
